@@ -1,0 +1,47 @@
+[core]
+	excludesfile = ~/.gitignore_global
+	editor = code --wait
+	pager = diff-so-fancy | less --tabs=4 -RFX
+	# pager = cat
+[alias]
+	co = checkout
+	cd = checkout
+	dir = checkout -b
+	del = branch -D
+	cm = commit -m
+	c = commit
+	ca = commit --amend
+  cp = cherry-pick
+	s = status
+	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+	b = -P branch
+	f = fetch
+	p = push
+	pf = push -f
+	rm = rebase -i master
+	rename = branch -m
+	rh = reset HEAD
+  rc = rebase --continue
+  ra = rebase --abort
+  rs = rebase --skip
+	lg1 = log --graph --all --format=format:'%C(bold cyan)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
+	lg = !"git lg1"
+	rv = !git diff `git merge-base HEAD  master`..HEAD
+	d = diff
+  dc = diff --cached
+  dm = diff master.. --
+[user]
+	name = Ksenia Platova
+	email = kplatova@gmail.com
+[push]
+	default = current
+[apply]
+    whitespace = error
+[diff]
+    tool = default-difftool
+[difftool "default-difftool"]
+    cmd = code --wait --diff $LOCAL $REMOTE
+[diff-so-fancy]
+	markEmptyLines = false
+[pull]
+	rebase = true
